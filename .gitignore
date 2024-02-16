@@ -1,5 +1,5 @@
 TOKEN.txt
-/.idea/
-/venv/Lib/
-/Delivery/
-/venv/Scripts/
+.idea/
+venv/Lib/
+Delivery/
+venv/Scripts/

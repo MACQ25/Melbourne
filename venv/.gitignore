@@ -1,3 +1,4 @@
 # created by virtualenv automatically
 TOKEN.txt
-/Scripts/
+Scripts/
+__pychache__/
