@@ -1,0 +1,42 @@
+Author: Mauricio Alejandro Canul Quintal
+Date of delivery: 16/02/2024
+Assignment name: FAQ Bot Plus (20%)
+Instructor: Sara Zendehboodi
+
+Instructions:
+
+This is the documentation file for the Bot "Melbourne" a little FAQ bot meant to take in and respond questions regarding the table top game known as D&D or Dungeons & Dragons, all information has been sourced from the official website, fan wiki or personal experience with the rule-books and official published content.
+
+What's on this folder?
+- DISC(T&L): The bot's discord token and link for invite, in case set up needs to be done again
+- Q&A: A list of all Questions and Answers that the bot has been equipped to respond to, read it in-case you need to corroborate the results of asking the bot questions, or if you want to use the Questions directly
+- RegQues: A list of all possible regular expression inputs that will yield a response from a corresponding question, list is not entirely comprehensive and may include some "test input" that is no longer viable, antiquated, or is already relying fully on "Fuzzy" to be recognized (meaning one or more extra mistakes will break them)
+- Chatty: The bot has had an implementation of the SpaCy library and makes use of a couple of patterns to try and answer with a custom question in the case that the question itself fails to be matched with something within its knowledge domain, read for example prompts and a list of possible entities.
+
+How does the bot work:
+
+The bot downloads into assorted lists and dictionaries the data it uses from a prepared and Formated JSON file, in the case that you want to read through all the data the bot will make use of you may read this file using an IDE.
+
+The JSON file can be found on the DATA folder.
+
+The JSON file contains some data that might be now considered "deprecated" or "dead" as it goes unused, this is for the reason that one of the iterations of the bot had said information used to make it function much more smoothly, as of now these functions have not been implemented, however this information shall not be removed in case it is taken up again for future implementation.
+
+TXT files in DATA folder or the DATA folder itself should not be removed, renamed or changed as these are used for answering some questions the user may make, these are still TXT however it is not unlikely the data will be moved to a JSON in the future.
+
+Functionality and order of operations can be found within the documentation comment of Process() within FAQBot, where everything is explained in a bullet pointed list
+
+To make Melbourne speak with you on discord, you may say:
+- Hello Melbourne!
+- What's up Mel?
+- Hi Melby :D
+- Greetings Melbourn
+- Hey Melly :3
+- Hey Melbub :P
+And other small variations
+
+To make Melbourne stop listening/speaking with you on discord, you may say:
+- goodbye Melbourne
+- Farewell Mel
+- Bye bye Melby
+- Stop Melbourn!
+- Bye Mel :3 

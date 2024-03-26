@@ -1,0 +1,349 @@
+{
+  "SpaCy": {
+    "Entry1": {
+      "name": "Asking Mel about her hobbies",
+      "pattern": [
+        {"LOWER": "do", "OP": "?"},
+        {"POS": "PRON", "OP": "?"},
+        {"LEMMA": {"IN": ["like", "enjoy", "love", "partake", "admire"]}},
+        {"POS": { "IN": ["ADP", "PART"] }, "OP": "*"},
+        {"POS": { "IN": ["ADJ", "ADV", "PUNC", "VERB"]}, "OP": "*"},
+        {"POS": "NOUN", "OP": "+"},
+        {"POS": "PUNC", "OP" : "?"}
+      ],
+      "resp": "My likes, hobbies and past-times are not something I like to divulge, but I am more of a wargame girl myself"
+    },
+    "Entry2": {
+      "name": "In case asking for search",
+      "pattern": [
+        {"POS": "AUX", "OP": "?"},
+        {"POS": "PRON", "OP": "?"},
+        {"LEMMA": "search"},
+        {"POS": {"IN": ["ADP", "DET"]}, "OP": "+"},
+        {"POS": {"IN": ["ADJ", "PUNC", "ADV", "PRON"]}, "OP": "*"},
+        {"POS": "NOUN", "OP": "+"},
+        {"POS": "PUNC", "OP" : "?"}
+      ],
+      "resp": "I am a bot, not a search engine :3"
+    },
+    "Entry3": {
+      "name": "In case asking for generation",
+      "pattern": [
+          {"POS": "AUX", "OP": "?"},
+          {"POS": "PRON", "OP": "?"},
+          {"LOWER": "please", "OP": "?"},
+          {"LEMMA": {"IN": ["generate", "create", "make", "invent", "give"]}},
+          {"POS": "PRON","OP": "*"},
+          {"POS": {"IN": ["ADP", "DET"]}, "OP": "+"},
+          {"POS": {"IN": ["ADJ", "PUNC", "ADV"]}, "OP": "*"},
+          {"POS": "NOUN", "OP": "+"},
+          {"POS": "PUNC", "OP" : "?"}
+      ],
+      "resp": "I am not equipped with the magics to manifest such a thing"
+    },
+    "Entry4": {
+      "name": "Request for generic information",
+      "pattern": [
+        {"POS": "AUX", "OP": "?"},
+        {"POS": "PRON", "OP": "?"},
+        {"LEMMA": {"IN": ["talk", "tell", "speak", "explain"]}},
+        {"POS": "ADP", "OP": "?"},
+        {"POS": "PRON","OP": "*"},
+        {"POS": {"IN": ["ADP", "DET"]}, "OP": "*"},
+        {"POS": {"IN": ["ADJ", "PUNC", "ADV"]}, "OP": "*"},
+        {"POS": "NOUN", "OP": "+"},
+        {"POS": "PUNC", "OP" : "?"}
+      ],
+      "resp": "That information is beyond my purview"
+    },
+    "Entry5": {
+      "name": "About the bot playing with user",
+      "pattern": [
+        {"POS": "AUX", "OP": "?"},
+        {"POS": "PRON", "OP": "?"},
+        {"POS": {"IN": ["VERB", "ADP", "DET"]}, "OP": "*"},
+        {"LEMMA": {"IN": ["play"]}},
+        {"POS": "ADV", "OP":  "?"},
+        {"POS": "PUNC", "OP" : "?"}
+      ],
+      "resp": "I am sorry but I am not creative enough to play!"
+    }
+  },
+  "GeneralTopics": {
+    "PERSON": "I don't know who {entity} is\n",
+    "NORP": "I have nothing to say on {entity}\n",
+    "FAC": "I am a bot, I have no body to visit a {entity}!!!\n",
+    "ORG": "I do not know what that is nor do I affiliate with it\n",
+    "GPE": "Never been in {entity}, so I wouldn't know\n",
+    "LOC": "I have never visited {entity}\n",
+    "PRODUCT": "I will not endorse any product as I don't purchase human baubles\n",
+    "EVENT": "In all my arcane knowledge, my knowledge of {entity} is lacking, So I'll ignore the question\n",
+    "WORK_OF_ART": "I unfortunately have not watched/read/heard of {entity}\n",
+    "LAW": "I am a d&d bot, I have no knowledge on law and nothing I say should be considered legal advice\n",
+    "LANGUAGE": "I have been programmed to speak and understand english, not {entity}\n",
+    "DATE": "I'm a bot based on a beholder, time means nothing to me\n",
+    "MONEY": "I am a bot representing a robotic beholder, money is a concern to mortals!\n"
+  },
+  "Questions": {
+    "Q1": {
+      "Question": "what is D&D?",
+      "Regex": [
+        "^(what|tell|talk)[\\s]?(is|about)[\\s]?(d[&n]d|(the\\sgame))(\\sabout)?[?]?$",
+        "^(detail|explain)(\\b\\s)?((what|this)\\b\\s)?(([a-z]*)\\b\\s)?(game|d[&n]d)?(\\b\\s)?(is(about)?|to me)?$"
+      ],
+      "Answer": 0,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q2": {
+      "Question": "who created D&D?",
+      "Regex": [
+        "^(who\\b\\s)((invented|created|made)\\b\\s)([a-z\\s]+\\b)?(d[&n]d|game|inventor)[?]$",
+        "^((tell me|d[&n]d was)\\b[\\s]+)((who\\b\\s)?(created|made) (it|by)?)(\\swho)?[?]?$",
+        "^((tell|show|(explain\\sto))\\sme\\s)?when\\swas\\s((the\\sgame)|d[n&]d)\\s(created|made|invented|released)[?]?$"
+      ],
+      "Answer": 1,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q3": {
+      "Question": "how is a game of d&d played?",
+      "Regex": [
+        "^(how|what)\\s(is|does|can)?\\s(a game|one|you)\\s(((be|of)\\b\\s)?)(d[n&]d|play(ed)?)\\s(like|d[&n]d)?([a-z\\s]*[?]?)$",
+        "^(how\\s)((do\\si)|is)(\\sthe\\sgame|d[n&]d)?(\\splay(ed)?)(d[n&]d|(\\sthe\\sgame))?[?]?$"
+      ],
+      "Answer": 2,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q4": {
+      "Question": "what do i need to play a game of d&d?",
+      "Regex": [
+        "^(what(\\sis|'s)?)\\b\\s((do\\si\\s)?need(ed)?\\b\\s)(to|for)\\s(play(ing)?\\b\\s)(the|a)?\\sgame?((\\s(of\\sd[&n]d)))?[?]?$",
+        "^(tell|((explain|talk)\\sto\\sme))\\s(about|what(\\sis|'s)?)(\\s(things(\\sare)?))?\\s(need(ed)?|necessary)\\sto\\splay(\\s(the\\sgame|d[&n]d))?$"
+      ],
+      "Answer": 3,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q5": {
+      "Question": "where can i learn more about the topic?",
+      "Regex": [
+        "^((explain|tell|talk|detail)(\\sto)?(\\sme\\s)?)?((where|how)\\s(can\\si|i\\scan))\\s(((start(ing)?\\s)?)?((read|learn)(ing)?\\s)?)more(\\sabout\\s)?(((the\\stopic|game)|d[&n]d|it)[?]?)?$",
+        "^(where|how)\\s(does|can)\\s(one|i)(\\sstart[?]*)?((\\s((to\\s)?learn|read)\\s)?more[?]*)?(about\\s(the\\sgame|d[&n]d))?$"
+      ],
+      "Answer": 4,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q6": {
+      "Question": "give me a breakdown of character creation",
+      "Regex": [
+        "^((give|tell)\\sme\\s)(([an\\s]*?((about|((breakdown|explanation)\\sof))\\s)character\\screation)|(how\\s(to|is)(\\sa)?\\s(create|character)(\\sa)?\\s(character|creation)))$"
+      ],
+      "Answer": 5,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q7": {
+      "Question": "list me all classes available in the game",
+      "Regex": [
+        "^(list|give|tell)\\sme\\s(about(\\sall)?|all)\\s(playable\\s)?classes\\s(available\\s)?in\\s(the\\sgame|d[&n]d)$",
+        "^(which|what)\\s(are\\s)?the\\s(playable\\s)?classes(\\savailable)?\\sin\\s(the\\sgame|d[n&]d)[?]?$"],
+      "Answer": 6,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q8": {
+      "Question": "list me all races that one can play as",
+      "Regex": [
+        "^(list|show|give)\\sme\\s(all|every)\\s((playable\\s)?(race(s)?|species))\\s(one\\scan\\splay(\\sas)?\\s)?(in\\s(the\\sgame|d[&n]d))$",
+        "^(can\\syou\\s)?(tell|explain\\sto)\\sme\\s(about|what)\\s((the\\s)?(playable\\s)?races\\s(are\\s)?)in\\s(the\\sgame|d[&n]d)[?]?$"
+      ],
+      "Answer": 7,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q9": {
+      "Question": "list all attributes each character has",
+      "Regex": [
+        "^(list|state|((tell|give)\\sme))\\s(all\\s)?(attributes\\s)(((of\\s)?(playable|each)\\s)|a\\s)character(s)?(\\shas)?$",
+        "^(what|which)\\s(attribute(s)?)\\s(does|can)\\sa\\s((playable|player)\\s)?character\\s(have|posses)([?]?)$"
+      ],
+      "Answer": 8,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q10": {
+      "Question": "give me a list of skills or abilities",
+      "Regex": [
+        "^(create|generate|((give|bring)\\sme))\\sa\\s(list|collection)\\sof(\\sthe)?(\\s(secondary|derived))?\\s((skills)(\\sor)?(\\sabilities)?)$",
+        "^(what|which)\\s(((secondary|derived|minor|specific)\\s)?((skill(s)?)|abilities))\\s(does|can)\\sa\\s((playable|player)\\s)?character\\s(have|posses)([?]?)$"
+      ],
+      "Answer": 9,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q11": {
+      "Question": "who is well known for playing the game?",
+      "Regex": [
+        "^(who\\sis|is\\s((there\\s)?anyone|(there\\sa)))\\s(((well\\s)?known)|famous|notable)\\s(for\\s)?(playing|(being\\s(involved|(a\\s)?player)|player))\\s((of|with)\\s)?((the\\sgame)|d[n&]d)[?]?$",
+        "^(tell|give)\\sme\\s(a|about\\sa)\\s(person|figure|person|individual)\\s(known|notable|famous)\\sfor\\s(playing|(being((\\sa\\splayer)|involved)))(\\s(of\\s)?((the\\sgame)|d[n&]d))?$"
+      ],
+      "Answer": 10,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q12": {
+      "Question": "describe all other options for character customization",
+      "Regex": [
+        "^(describe|((tell|(talk\\sto))(\\sme\\sabout)))\\s(all\\s)?(other|additional|extra|more)\\soptions\\sfor\\s(character\\s)?(customization|creation)(\\sother\\sthan\\sthe\\s(basic(s)?|base)(\\sones)?)?",
+        "(tertiary|niche|specific|additional)\\s(options|alternatives|aspects)(\\sfor\\scharacter\\s)(customization|creation)(not\\spart\\sof\\s(basic|primary)\\sattributes)?[?]?$"
+      ],
+      "Answer": 11,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q13": {
+      "Question": "what is a ttrpg?",
+      "Regex": [
+        "((explain|tell|talk)\\s(to\\s)?(me\\s)?)(about\\s)?(what\\sis\\sa\\s)((tt|(table\\stop\\s))(rpg|(role\\splaying\\sgame)))((s)?)[?]?$",
+        "^(what|which)\\s(type|class|category)\\s(of\\s(board[- ])?game)\\s(is\\s)(d[&n]d)[?]?$"
+      ],
+      "Answer": 12,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q14": {
+      "Question": "make a character name at random",
+      "Regex": [
+        "^(make|invent|generate|create)\\s(me\\s)?a((\\s(playable|player))?\\scharacter\\s)(((at\\s)?random(ly)?)|prompt)$",
+        "^(make|generate|give|show)\\s(me\\s)?a(\\srandom(ly)?)(\\s(made|generated|created))?(\\scharacter)$"
+      ],
+      "Answer": 13,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q15": {
+      "Question": "give a quest prompt",
+      "Regex": [
+        "^(make|generate|give|show|create)(\\sme)?(\\sa)?([a-z ]*)(\\s(quest|plot|story|adventure))(\\sidea)?(\\sprompt)?$"
+      ],
+      "Answer": 14,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q16": {
+      "Question": "which spell is the best in the game?",
+      "Regex": [
+        "^(what|which)\\s(magic|spell|sorcery|ability)\\sis(\\sone\\sof)?\\sthe\\sbest\\sin\\s((the\\sgame)|d[n&]d)[?]?$",
+        "^((tell|give|show)\\sme\\s)?(what|which)(\\sis)?(\\sone\\sof)?\\sthe\\sbest\\s(magic|(spell(s)?)|sorcery|ability)\\sin\\s((the\\sgame)|d[n&]d)[?]?$"
+      ],
+      "Answer": 15,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q17": {
+      "Question": "make an example monster encounter!",
+      "Regex": [
+        "(make|create|generate|give|show)([a-z ]*)(sample|improvised|example|instance|random)?\\s(monster|creature|combat)\\s(fight|encounter|combat|scenario)[\\W]?$",
+        "(how|what)\\s(does|is)([a-z ]*)(((the\\sgame)|d[n&]d)?)((\\s)?)(combat|monster)((\\s)?)(combat|fight|encounter)(\\slook)?[a-z ]*[?]?$"
+      ],
+      "Answer": 16,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q18": {
+      "Question": "lets roll some dice!",
+      "Regex": [
+        "^(lets\\s)?roll(\\sme)?\\s(some|a|the)\\s(die|dice|d20)$",
+        "^((will|can|could|please)|(what\\sabout))(\\syou)?(\\sroll(ing)?)\\s(some|a|the)\\s(dice|die|d20)$"
+      ],
+      "Answer": 17,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q19": {
+      "Question": "talk about games similar to d&d",
+      "Regex": [
+        "(show|talk|list|tell)([a-z ]*)(((board)?games)|things|activities|((ttrpg|(table\\stop\\srpg)|rpg))(s)?)\\s(((a)?like)|similar|related)\\s[a-z ]*((the\\sgame)|d[n&]d|it)$",
+        "^(is|what|are)([a-z ]*)(other|more|anything|(game(?)))([a-z ]*)(like|similar|related|comparable|akin)[a-z ]*(d[&n]d|(this\\s(game|one)))[?]?$"
+      ],
+      "Answer": 18,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    },
+    "Q20": {
+      "Question": "tell me about the editions of the game",
+      "Regex": [
+        "^(tell|talk|speak|show|explain)\\s(to\\s)?(me\\s)?([a-z ]*\\s)?(edition(s)?\\sof\\s)((the\\sgame)|d[&n]d)$",
+        "^(what|which|how)\\s([a-z ]*)(edition(s)?)(\\s(are|(have\\s(been|there)))\\s(there|been))?\\sin\\s((the\\sgame)|d[n&]d)[?]?"
+      ],
+      "Answer": 19,
+      "GenIntent": [
+        "tag1",
+        "tag2..."
+      ]
+    }
+  },
+  "Answers": {
+    "0": "Dungeons & Dragons (D&D), is a fantasy role-playing game (RPG) set in a medieval fantasy world in which multiple players form a group that is led through an adventure by one player who assumes the role of the storyteller, or Dungeon Master.",
+    "1": "It was created by American game designers Ernest Gary Gygax and David Arneson in 1974",
+    "2": "The Dungeon Master makes up story events or chooses them from one of the published adventures, to which the players may respond in different manners to create a unique gaming experience.\\n\\nThe other players each choose a race (human, elf, dwarf, halfling), a class (e.g., Fighter, Rogue, Wizard), and skills for their character and must face challenges of varying dificulty that the Dungeon Master presents to them.",
+    "3": "You only need some dice (one or more of each of the following: 4, 6, 8, 10, 12, 20 sided dice), some printed character sheets, pencils, erasers, blank sheet paper, the core rules book, and some friends. \\n\\nAdditional accessories such as miniatures, printed maps or specialized rule books are optional",
+    "4": "There's many good places to find out more about the hobbie\\n\\n - The D&Dbeyond website:  https://www.dndbeyond.com/how-to-play-dnd \\n\\n - The D&D youtube community: https://www.youtube.com/hashtag/dnd \\n\\n - The D&D subreddit. https://www.reddit.com/r/DnD/",
+    "5": "On the following order you: \\n- Choose your class\\n- Choose your race/species\\n- Calculate\\n- your ability scores\\n- Calculate your hit points\\n- Calculate your AC\\n- Choosing your\\n- feats\\n- Choosing your skills\\n- Figuring out your proficiency modifier\\n- Choosing your spells\\n- Choosing your equipment",
+    "6": "As of 5th edition the classes are: \\n 1) Fighter\\n 2) Wizard\\n 3) Rogue\\n 4) Cleric\\n 5) Barbarian\\n 6) Druid\\n 7) Warlock\\n 8) Ranger\\n 9) Paladin \\n 10) Sorcerer\\n 11) Bard \\n 12) Monk\\n 13) Artificer",
+    "7": "As of 5th edition the base races found in the core rules book are: \\n 1) Human\\n 2) Elf\\n 3) Dwarf\\n 4) Halfling\\n 5) Half-elf\\n 6) Half-orc\\n 7) Tiefling\\n 8) Gnome\\n 9) Dragonborn",
+    "8": "The main 6 attributes are: \\n- Strenght\\n- Constitution\\n- Dexterity\\n- Intelligence\\n- Charisma\\n- Wisdom\\n\\n Outside of these, there are skills that are associated with the previous 6 attributes",
+    "9": "The skills derived from the main 6 attributes are: \\n-Athletics \\n-Acrobatics\\n-Sleight of Hand\\n-Stealth\\n-Arcana\\n-History\\n-Investigation\\n-Nature\\n-Religion\\n-Animal Handling\\n-Insight\\n-Medicine\\n-Perception\\n-Survival\\n-Deception\\n-Intimidation\\n-Performance and Persuasion",
+    "10": "There are many celebrities that have mentioned having played D&D in the past, but perhaps the closest thing that D&D has to a \"Celebrity\" is voice actor Mathew Mercer, a very popular voice actor both for movies and video games that has his own D&D based show on youtube (named Critical Role) and now has a show based upon it on Amazon prime Video",
+    "11": "You can choose feats, which are special talents your character has which can vary from mastery using heavy weapons to just being extremely lucky, you can choose your character's proficiencies with tools, weapons, languages and things that go unmentioned by the rules (so long as the DM allows it) and if you are a spell caster you can choose your spells, anything from invisibility to throwing fireballs.",
+    "12": "TTRPG's, short for TableTop Role-Playing Games (or tabletop RPG's), are social games played with a group of friends around the table or online, where each participant creates, controls, and plays a fictional character in an evolving story or adventure. In most TTRPG's, one participant acts as the \"game master\", the host, referee, and facilitator of the game.",
+    "13": "protocol1",
+    "14": "protocol2",
+    "15": "Magic Missilie ofc :3",
+    "16": "protocol3",
+    "17": "protocol4",
+    "18": "There are many TTRPGs like D&D, there is Pathfinder, Cyberpunk, GURPS, Wrath & Glory, Gloomhaven, Call of Cthulhu, World of Darkness and many more, D&D just happens to be the most popular one",
+    "19": "Every couple of years D&D's game system is revamped through the \"Edition\" system, much like books the editions are meant to be revisions of the systems and to remove the parts of the game that are not contributing to the experience or add new options to make it more exciting. \\n\\n The editions of D&D have been:\\n 1) D&D (1974) \\n 2) advanced D&D aka 1.5 edition (1991)\\n 3) 2nd edition D&D (1995) \\n 4) D&D 3rd edition (2000) \\n 5) D&D 3.5 (the best one) (2003) \\n 6) A mistake \\n 7) D&D 5th edition (most popular) (2014)"
+  }
+}

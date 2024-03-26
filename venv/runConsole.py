@@ -1,0 +1,3 @@
+import FAQbot
+
+FAQbot.main()

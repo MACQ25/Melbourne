@@ -1,0 +1,41 @@
+SpaCy functionality examples:
+
+Pattern 1: Mel's likes and hobbies
+- do you like to watch movies?
+- do you like to read books?
+- do you like ice cream?
+
+Pattern 2: Search query and not generation
+- can you search for youtube videos?
+- will you search some websites
+- may you search some cute cat videos?
+
+Pattern 3: Generation of things out of knowledge domain
+- may you please create me a sword?
+- can you make me some potions?
+- can you invent some artifact?
+- Melbourne I am going to ask you to create a magic armor
+
+Pattern 4: Generic Requests
+- can you tell me about liches?
+- tell me about cars
+- talk to me about fun games
+
+Pattern 5: Bot playing with user
+- can you play dnd with me?
+- may we play the game?
+
+If all else fails but before Melbourne responds with "I don't know", it will try to detect the subject of conversation and tailor the response for it if possible, the available entities are:
+- People (PERSON)
+- Nationalities, Organizations and Religions (NORP)
+- Facilities (FAC)
+- Organizations and businesses (ORG)
+- Geo-Political Entities (GPE)
+- Locations (LOC)
+- Products (PRODUCT)[Not a single one of these was successfully detected during testing!]
+- Events (EVENT)
+- Media (WORK_OF_ART) [More likely to pop up if classic or in ""]
+- Laws (LAW)
+- Language (LANGUAGE)
+- Time, months, days, years (DATE)
+- Currencies (MONEY)

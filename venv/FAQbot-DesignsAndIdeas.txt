@@ -1,0 +1,90 @@
+FAQbot - knowledge base:
+
+Topic = D&D
+
+Melbourne's possible nicknames: Melbourne, Mel, Melly, Bot M, Bot Mel
+
+Intents:
+Start -> 1
+Help -> 2
+Question -> 3
+Do -> 4
+Redirect -> 5
+Default -> 6
+End -> 7
+
+
+Utterances (user):
+
+1 ¬->
+Hello Mel! 
+Hi bot
+Greetings Melly
+Melbourne
+Mel
+
+Contains: Greeting word, allowed to have non alphabeticals (!?) and always contains Mel's name or nickname
+
+2 ¬->
+Commands?
+How do you function?
+What can you do Mel?
+Can you help me Mel?
+What can Mel do?
+Help me
+
+
+/** Heavy part as this includes outside info **/
+3 ¬->
+Can you tell me about
+
+
+
+7 ¬->
+
+7.1 (Just "reset")
+Lets change the subject Mel
+Thank you Mel!
+
+7.2 (dismiss)
+That's all Mel, thanks
+Goodbye Mel!
+You can stop now Mel
+
+
+
+Responses (bot):
+
+1 ¬-> 
+Greetings {user}
+Hello {user}!
+Many hellos friend
+How may I help?
+I've been called
+(Easter egg) I am busy playing poker with Sydney, what's up?
+
+2 ¬->
+/** This command should be uniform and help the user understand Mel's complete functionality **/
+
+I am a bot with knowledge on a specific topic, that being D&D (because I am a nerd), you may ask me to provide information on what the game itself is, how it is played, the various classes and races and some resources for you to know more about the game :D
+
+You may:
+- Ask how D&D is played 
+- Ask about the classes
+- Command me to throw some dice
+- Tell me to give you external links
+- Request me to stop or change the subject
+
+6 ¬->
+I am sorry I did not quite catch that
+May you repeat that?
+I think you may want to say "Help me" so I can give you a better idea of how to ask me questions
+
+
+7 ¬->
+7.1: 
+What else do you want to know about?
+
+7.2:
+Your welcome, have a nice day!
+Glad to be of service {user}
